@@ -1,7 +1,10 @@
 # jquery-viewbinder
 jqeury plugin for view binder
 
-usage:
+## usage:
+data binding to `data-vmap`, `data-vpath` elements.
+
+### bind from object
 ```
 <span data-vmap="hoge" data-vpath="name"></span>
 
@@ -13,9 +16,30 @@ $(()=>{
 })
 ```
 
-dependencies:
-https://github.com/jquery/jquery
-https://code.google.com/archive/p/jsonpath/
+### bind from localStorage
+```
+<div><span data-vmap="#lo" data-vpath="number"></span></div>
+
+$(()=>{
+    localStorage.setItem("lo", JSON.stringify({number: 1234567890}));
+    $("div").viewbinder();
+})
+```
+
+### bind from sessionStorage
+```
+<div><span data-vmap="%sess" data-vpath="$.items[0].number"></span></div>
+
+$(()=>{
+    sessionStorage.setItem("sess", JSON.stringify({items:[{number: 1234567890}]}));
+    $("div").viewbinder();
+})
+```
+
+
+## dependencies:
+* https://github.com/jquery/jquery
+* https://code.google.com/archive/p/jsonpath/
 
 
 ----
